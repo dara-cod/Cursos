@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: daratech-configmap2
+  labels:
+    app: daratech-app
+data: 
+  .env: |
+    http_port=3000
+    database_name=db-daratech

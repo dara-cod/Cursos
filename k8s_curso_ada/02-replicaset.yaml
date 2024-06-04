@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: daratech-replicaset
+spec:
+  replicas: 3
+  ## Pods selector
+  selector:
+    matchLabels:
+      app: daratech-app
+  template: 
+    metadata:
+      labels:
+        app: daratech-app
+    spec:
+      containers:
+      - name: daratech-container
+        image: nginx
+        ports:
+        - containerPort: 80

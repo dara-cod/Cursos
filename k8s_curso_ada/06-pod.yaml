@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: daratech-pod
+spec: 
+  containers:
+  - name: daratech-container
+    image: nginx
+    volumeMounts: 
+    - name: daratech-volume
+      mountPath: /usr/share/nginx/html
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits: 
+        memory: "128Mi"
+        cpu: "500m"
+  #serviceAccount: daratech-sa
+  volumes:
+  - name: daratech-volume
+    persistentVolumeClaim:
+      claimName: daratech-pvc

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: daratech
+  labels:
+    app: web
+  annotations:
+    prometheus.io/scrape: 'true'
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 80
+      name: http
+    env:
+    - name: ENV
+      value: "PROD"
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m 
+        memory: 128Mi

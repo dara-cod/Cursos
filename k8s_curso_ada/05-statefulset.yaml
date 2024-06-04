@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: daratech-sts
+spec:
+  serviceName: daratech-sts
+  replicas: 2
+  selector:
+    matchLabels: 
+      app: daratech-ds
+  template:
+    metadata:
+      labels:
+        app: daratech-ds
+    spec:
+      containers:
+      - name: statefulset
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password  

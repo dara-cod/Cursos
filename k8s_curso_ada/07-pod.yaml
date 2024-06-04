@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: daratech-api
+  labels:
+    app: daratech-app1
+spec:
+  containers:
+  - name: webserver
+    image: nginx
+    env:
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: daratech-secret
+          key: username
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: daratech-secret
+          key: password
+    envFrom:
+    - configMapRef:
+       name: daratech-configmap
+    volumeMounts:
+    - name: secret-volume
+      mountPath: "/etc/secret"
+      readOnly: true
+    - name: configmap-volume
+      mountPath: "/app"
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  volumes:
+  #Montagem de um secret usando volume
+  - name: secret-volume
+    secret:
+      secretName: daratech-secret
+  #Montagem de um configmap usando volume
+  - name: configmap-volume
+    configMap:
+      name: daratech-configmap2
+      items:
+      - key: .env
+        path: .env

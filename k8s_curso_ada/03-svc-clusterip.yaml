@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: daratech-svc-cip
+spec:
+  type: ClusterIP
+  selector:
+    app: daratech-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 80

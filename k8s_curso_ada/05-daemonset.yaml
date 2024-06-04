@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daratech-daemonset
+  labels:
+    app: daratech-ds
+spec:
+  selector: 
+    matchLabels:  
+      app: daratech-ds
+  template:
+    metadata:
+      labels:
+        app: daratech-ds
+    spec:
+      containers: 
+      - name: daemonset
+        image: nginx:latest
+        ports:
+        - containerPort: 80
