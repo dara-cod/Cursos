@@ -27,22 +27,3 @@ resource "aws_subnet" "eks_subnet_public_1b" {
     }
   )
 }
-
-
-resource "aws_subnet" "eks_subnet_public_1c" {
-  vpc_id     = aws_vpc.eks_vpc.id
-  cidr_block = "10.0.3.0/24"
-
-  tags = {
-    Name = "comunidaddevops-subnet-1c"
-  }
-}
-
-resource "aws_subnet" "eks_subnet_public_1d" {
-  vpc_id     = aws_vpc.eks_vpc.id
-  cidr_block = "10.0.4.0/24"
-
-  tags = {
-    Name = "comunidaddevops-subnet-1d"
-  }
-}
