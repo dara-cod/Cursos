@@ -1,12 +1,6 @@
-# .pre-commit-config.yaml
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.99.4
+    rev: v1.99.4 
     hooks:
-      - id: terraform_fmt
-        args:
-          - -recursive 
+      - id: terraform_fmt     
       - id: terraform_validate
-        args:
-          - -json      
-          - -no-color  
