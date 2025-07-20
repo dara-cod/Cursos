@@ -1,0 +1,18 @@
+kind: "DatadogAgent"
+apiVersion: "datadoghq.com/v2alpha1"
+metadata:
+  name: "datadog"
+spec:
+  global:
+    site: "us5.datadoghq.com"
+    credentials:
+      apiSecret:
+        secretName: "datadog-secret"
+        keyName: "api-key"
+    registry: "gcr.io/datadoghq"
+    tags:
+      - "qa-cursos"
+  features:
+    logCollection:
+      enabled: true
+      containerCollectAll: true
