@@ -36,3 +36,10 @@ Cada módulo do curso possui um arquivo próprio contendo:
 
 ---
 
+Gitlab runner: Servidores
+
+Estrutura das branches: 
+
+master: branch principal e importante - código de produção
+develop: Contém os códigos do próximo release. Quando a branch estiver pronta pra produção, fazer o merge para a master.
+feture: Criada para desenvolver uma nova funciolidade. Criada da develop.
