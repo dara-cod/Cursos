@@ -1,44 +1,17 @@
 version: 3
 
-parallel_plan: true
+terraform_version: "1.9.8"
 
+parallel_plan: true
 parallel_apply: true
 
 projects:
   - name: sandbox-s3
-
     dir: infra-live/sandbox/dev/us-east-1/infrastructure/logs
-
     workflow: terragrunt
-
     autoplan:
       enabled: false
-
       when_modified:
         - "**/*.tf"
         - "**/*.hcl"
         - "**/*.tfvars"
-
-workflows:
-  terragrunt:
-    plan:
-      steps:
-        - run: terragrunt init
-        - run: terragrunt plan -out=$PLANFILE
-
-    apply:
-      steps:
-        - run: terragrunt apply $PLANFILE
-
-        - run: |
-            echo ""
-            echo "========================================"
-            echo " Apply complete!"
-            echo "========================================"
-            echo ""
-            echo "Resource.....: $(terragrunt output -raw resource_name)"
-            echo "ARN..........: $(terragrunt output -raw resource_arn)"
-            echo "AWS Account..: $(terragrunt output -raw aws_account)"
-            echo "Region.......: $(terragrunt output -raw region)"
-            echo "Workspace....: $(terragrunt output -raw workspace)"
-            echo ""
