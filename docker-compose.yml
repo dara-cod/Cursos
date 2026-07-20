@@ -23,3 +23,4 @@ services:
     command:
       - server
       - --repo-config=/repos/repos.yaml
+      - --automerge
