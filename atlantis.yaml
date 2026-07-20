@@ -1,15 +1,19 @@
 version: 3
 
 parallel_plan: true
+
 parallel_apply: true
 
 projects:
   - name: sandbox-s3
+
     dir: infra-live/sandbox/dev/us-east-1/infrastructure/logs
+
     workflow: terragrunt
 
     autoplan:
       enabled: false
+
       when_modified:
         - "**/*.tf"
         - "**/*.hcl"

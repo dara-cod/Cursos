@@ -20,4 +20,6 @@ services:
 
     working_dir: /repos
 
-    command: server
+    command:
+      - server
+      - --repo-config=/repos/repos.yaml
