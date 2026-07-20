@@ -12,12 +12,11 @@ projects:
     workflow: terragrunt
 
     autoplan:
-      enabled: false
+      enabled: true
 
       when_modified:
-        - "**/*.tf"
-        - "**/*.hcl"
-        - "**/*.tfvars"
+        - "**"
+        - "../../../../../../modules/**/*.tf"
 
 workflows:
   terragrunt:
