@@ -1,11 +1,21 @@
-output "bucket_arn" {
+data "aws_caller_identity" "current" {}
 
-  value = aws_s3_bucket.this.arn
-
+output "resource_name" {
+  value = aws_s3_bucket.this.bucket
 }
 
-output "bucket_id" {
+output "resource_arn" {
+  value = aws_s3_bucket.this.arn
+}
 
-  value = aws_s3_bucket.this.id
+output "aws_account" {
+  value = data.aws_caller_identity.current.account_id
+}
 
+output "region" {
+  value = var.region
+}
+
+output "workspace" {
+  value = terraform.workspace
 }

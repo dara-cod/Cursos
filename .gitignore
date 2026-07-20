@@ -1,13 +1,8 @@
 .env
-
 .terraform
-
 .terragrunt-cache
-
 *.tfstate
-
 *.tfstate.*
-
 crash.log
-
 keys/
+*.pem
