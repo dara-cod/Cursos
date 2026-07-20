@@ -9,8 +9,7 @@ RUN apk add --no-cache \
     wget \
     jq \
     yq \
-    python3 \
-    py3-pip
+    aws-cli
 
 #############################################
 # Terraform
@@ -38,6 +37,4 @@ RUN wget https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGR
 # AWS CLI
 #############################################
 
-RUN pip3 install --no-cache-dir awscli
-
-USER atlantis
+RUN apk add --no-cache aws-cli

@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   atlantis:
     build:
@@ -15,9 +13,6 @@ services:
     env_file:
       - .env
 
-    environment:
-      ATLANTIS_REPO_CONFIG: /repos/atlantis.yaml
-
     volumes:
       - .:/repos
       - ./keys:/keys:ro
@@ -25,4 +20,6 @@ services:
 
     working_dir: /repos
 
-    command: server
+    command:
+      - server
+      - --repo-config=/repos/repos.yaml

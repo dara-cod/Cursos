@@ -5,15 +5,13 @@ parallel_plan: true
 parallel_apply: true
 
 projects:
-
   - name: sandbox-s3
 
-    dir: infra-live/sandbox/dev/us-east-1/infrastructure/s3/logs
+    dir: infra-live/sandbox/dev/us-east-1/infrastructure/logs
 
     workflow: terragrunt
 
     autoplan:
-
       enabled: false
 
       when_modified:
@@ -22,16 +20,12 @@ projects:
         - "**/*.tfvars"
 
 workflows:
-
   terragrunt:
-
     plan:
-
       steps:
         - run: terragrunt init
         - run: terragrunt plan -out=$PLANFILE
 
     apply:
-
       steps:
         - run: terragrunt apply $PLANFILE
