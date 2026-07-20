@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  atlantis:
+    build:
+      context: .
+
+    container_name: atlantis
+
+    restart: unless-stopped
+
+    ports:
+      - "4141:4141"
+
+    env_file:
+      - .env
+
+    environment:
+      ATLANTIS_REPO_CONFIG: /repos/atlantis.yaml
+
+    volumes:
+      - .:/repos
+      - ./keys:/keys:ro
+      - ~/.aws:/home/atlantis/.aws:ro
+
+    working_dir: /repos
+
+    command: server
