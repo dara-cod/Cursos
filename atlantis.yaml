@@ -12,7 +12,7 @@ projects:
     workflow: terragrunt
 
     autoplan:
-      enabled: true
+      enabled: false
 
 workflows:
   terragrunt:
