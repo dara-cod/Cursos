@@ -16,7 +16,7 @@ services:
     volumes:
       - .:/repos
       - ./keys:/keys:ro
-      - ~/.aws:/home/atlantis/.aws:ro
+      - ~/.aws:/root/.aws:ro
 
     working_dir: /repos
 
