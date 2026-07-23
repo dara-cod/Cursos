@@ -6,9 +6,7 @@ parallel_apply: true
 projects:
   - name: sandbox-s3
     dir: infra-live/sandbox/dev/us-east-1/infrastructure/logs
-
     terraform_version: "1.9.8"
-
     workflow: terragrunt
 
     autoplan:
@@ -18,8 +16,6 @@ workflows:
   terragrunt:
     plan:
       steps:
-        - run: pwd
-        - run: find .
         - run: terragrunt init
         - run: terragrunt plan -out=$PLANFILE
 
