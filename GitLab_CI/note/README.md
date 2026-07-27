@@ -43,3 +43,13 @@ Estrutura das branches:
 master: branch principal e importante - código de produção
 develop: Contém os códigos do próximo release. Quando a branch estiver pronta pra produção, fazer o merge para a master.
 feture: Criada para desenvolver uma nova funciolidade. Criada da develop.
+
+parametros: 
+
+parallel - quantidade de instancia um job pode executar em paralelo
+
+Duas formas de configurar o parallel: 
+
+Número fixo (Multi-instanciação simples): Apenas roda o mesmo script várias vezes em paralelo (geralmente usado com a variável $CI_NODE_INDEX e $CI_NODE_TOTAL para você mesmo dividir a carga de testes via código).
+
+Matriz de variáveis (parallel:matrix): Permite rodar o job em paralelo mudando os valores de variáveis diferentes em cada instância (ex: testar o mesmo código em várias versões do Node.js ou do Python ao mesmo tempo).
